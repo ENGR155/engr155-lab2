@@ -3,7 +3,7 @@
 // Multiplexer module that multiplexes two seven-segment displays
 
 module lab2_multiplexer #(parameter width = 24, parameter logic [width-1:0] max_count = 4_999_999)(
-    input  logic clk,
+    input  logic reset, clk, enable,
     output logic multi
 );
 
@@ -28,7 +28,5 @@ logic [width-1:0] count = 0;
 
    // Assign LED output
    assign multi = state;
-
-
 
 endmodule

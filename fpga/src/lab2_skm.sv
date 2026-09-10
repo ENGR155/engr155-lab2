@@ -31,7 +31,9 @@ module lab2_skm #(parameter width = 24, parameter [width-1:0] max_count = 499999
         .width     (24),
         .max_count (4_999_999)
     ) multiplex (
+        .reset  (1'b1),
         .clk    (int_osc),
+        .enable (1'b1),
         .multi  (multi)
     );
     
