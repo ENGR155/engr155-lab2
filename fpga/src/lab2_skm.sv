@@ -7,13 +7,13 @@ module lab2_skm #(parameter width = 24, parameter [width-1:0] max_count = 499999
     input  logic [3:0] s,
     input  logic [3:0] s_2,
     output logic [6:0] seg,
-    output logic [6:0] seg_2,
-    output logic [1:0]multiplex
+    output logic [1:0] anode // Pinout for common anode for the transistors
 );
 
     logic int_osc;
-    logic [1:0] multi;
+    logic multi;
 
+    logic [3:0] s_1;
 
 
     // Internal high-speed oscillator
@@ -22,14 +22,8 @@ module lab2_skm #(parameter width = 24, parameter [width-1:0] max_count = 499999
 
     // Convert switches into the 7-segment display
     lab2_sevenseg sevenseg_decoder (
-        .s   (s),
+        .s   (s_1),
         .seg (seg)
-    );
-    
-    // Convert a second group of switches into the 7-segment display
-    lab2_sevenseg sevenseg_decoder_2 (
-        .s   (s_2),
-        .seg (seg_2)
     );
 
     // Sets up a counter for the multiplexer
@@ -41,5 +35,10 @@ module lab2_skm #(parameter width = 24, parameter [width-1:0] max_count = 499999
         .multi  (multi)
     );
     
+    // Assigning final logic and switching
+    assign s = multi ? s_2 : s;
+
+    assign anode[0] = multi;
+    assign anode[1] = ~multi;   
 
 endmodule
