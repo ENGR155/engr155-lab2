@@ -1,2 +1,2 @@
-Readme for lab 1
+Readme for lab 2
 
