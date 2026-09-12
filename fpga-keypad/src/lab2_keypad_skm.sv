@@ -31,11 +31,11 @@ module lab2_skm (
     // Assign row data
     always_comb begin
         case(scan_out)
-            3'b000: rows = 4'b1000; // Row 0 active
-            3'b001: rows = 4'b0100; // Row 1 active
-            3'b010: rows = 4'b0010; // Row 2 active
-            3'b011: rows = 4'b0001; // Row 3 active
-            default: rows = 4'b1111; // All rows inactive
+            3'b000: rows = 4'b1000; // Row 3 active
+            3'b001: rows = 4'b0100; // Row 2 active
+            3'b010: rows = 4'b0010; // Row 1 active
+            3'b011: rows = 4'b0001; // Row 0 active
+            default: rows = 4'b0000; // All rows inactive
         endcase
     end
 
