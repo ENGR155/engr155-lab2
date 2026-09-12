@@ -10,7 +10,7 @@ module lab2_skm (
 );
 
     logic int_osc;
-    logic [2:0] scan_out;
+    logic [1:0] scan_out;
 
     // Internal high-speed oscillator
     HSOSC #(.CLKHF_DIV(2'b01))
@@ -40,9 +40,5 @@ module lab2_skm (
     end
 
     // Assigning final logic by reading from columns
-    assign led[0] = cols[0];
-    assign led[1] = cols[1];
-    assign led[2] = cols[2];
-    assign led[3] = cols[3];
-
+    assign led = ~cols;
 endmodule
