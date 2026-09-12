@@ -19,7 +19,7 @@ module lab2_skm (
     // Sets up a counter for the scanner
     lab2_scanner #(
         .width     (24),
-        .max_count (1_499_999)
+        .max_count (2_999_999)
     ) scan (
         .reset_n  (1'b1),
         .clk    (int_osc),
