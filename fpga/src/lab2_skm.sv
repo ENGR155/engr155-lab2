@@ -29,7 +29,7 @@ module lab2_skm #(parameter width = 24, parameter [width-1:0] max_count = 499999
     // Sets up a counter for the multiplexer
     lab2_multiplexer #(
         .width     (24),
-        .max_count (4_999_999)
+        .max_count (199_999)
     ) multiplex (
         .reset  (1'b1),
         .clk    (int_osc),
@@ -38,7 +38,7 @@ module lab2_skm #(parameter width = 24, parameter [width-1:0] max_count = 499999
     );
     
     // Assigning final logic and switching
-    assign s = multi ? s_2 : s;
+    assign s_1 = multi ? s_2 : s;
 
     assign anode[0] = multi;
     assign anode[1] = ~multi;   
