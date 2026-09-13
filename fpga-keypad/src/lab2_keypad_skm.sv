@@ -3,7 +3,7 @@
 // Top-level module that connects two seven-segment displays
 // and multiplexes them to save on resources.
 
-module lab2_skm (
+module lab2_keypad_skm (
     input  logic [3:0] cols, // Column inputs from the keypad
     output logic [3:0] rows, // Row outputs to the keypad
     output logic [3:0] led // LED outputs from the FPGA
