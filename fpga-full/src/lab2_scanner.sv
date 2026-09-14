@@ -18,7 +18,7 @@ module lab2_scanner #(parameter width = 24, parameter logic [width-1:0] max_coun
       .reset_n  (1'b1),
       .clk    (clk),
       .enable (1'b1),
-      .count  (count2)
+      .count2  (count2)
     );
 
   // Assigning final logic and switching

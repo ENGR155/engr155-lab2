@@ -45,7 +45,7 @@ module lab2_skm (
         .reset_n  (1'b1),
         .clk    (int_osc),
         .enable (1'b1),
-        .count  (counter)
+        .count2  (counter)
     );
 
     // Sets up a scanning module to output rows
