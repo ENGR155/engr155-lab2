@@ -7,8 +7,8 @@ module lab2_scanner #(parameter width = 24, parameter logic [width-1:0] max_coun
      output logic [3:0] rows
  );
 
-    logic [width-1:0] count2 = 0;
-    logic [1:0] state = 0;
+    logic [width-1:0] count2;
+    logic [1:0] state;
 
   // Sets up a counter for the multiplexer
   counter #(
