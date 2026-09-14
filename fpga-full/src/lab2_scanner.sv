@@ -34,14 +34,9 @@ module lab2_scanner #(parameter width = 24, parameter logic [width-1:0] max_coun
   end
 
   // Assign row data
-    always_comb begin
-        case(state)
-            2'b00: rows = 4'b1000; // Row 0 active
-            2'b01: rows = 4'b0100; // Row 1 active
-            2'b10: rows = 4'b0010; // Row 2 active
-            2'b11: rows = 4'b0001; // Row 3 active
-            default: rows = 4'b0000; // All rows inactive
-        endcase
-    end
+  assign rows = (state == 2'b00) ? 4'b1000 :
+                (state == 2'b01) ? 4'b0100 :
+                (state == 2'b10) ? 4'b0010 :
+                                   4'b0001;
 
 endmodule
