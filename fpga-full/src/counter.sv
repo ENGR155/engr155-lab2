@@ -4,7 +4,7 @@
 
 module counter #(parameter width = 24, parameter logic [width-1:0] max_count = 199_999)(
     input  logic reset_n, clk, enable,
-    output logic count2
+    output logic [width-1:0] count2
 );
 
 logic [width-1:0] count = 0;
@@ -21,7 +21,7 @@ logic [width-1:0] count = 0;
       else count <= count + 1;
      end
    end
-
+    
    // Assign LED output
    assign count2 = count;
 
