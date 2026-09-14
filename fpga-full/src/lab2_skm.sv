@@ -35,7 +35,7 @@ module lab2_skm (
     parameter width1 = 24;
     parameter logic [width1-1:0] max_count1 = 199_999;
     parameter width2 = 24;
-    parameter logic [width2-1:0] max_count2 = 2_999_999;
+    parameter logic [width2-1:0] max_count2 = 11_999_999;
     
 
     // Sets up a counter for the multiplexer
@@ -46,7 +46,7 @@ module lab2_skm (
         .reset_n  (1'b1),
         .clk    (int_osc),
         .enable (1'b1),
-        .count2  (counter)
+        .count  (counter)
     );
 
     // Sets up a scanning module to output rows
@@ -59,10 +59,11 @@ module lab2_skm (
     );
     
     // Assigning final logic and switching
-    if counter > max_count/2 begin
-        multi = 1;
-    else
-        multi = 0;
+    always_comb begin
+        if counter > max_count/2
+            multi = 1;
+        else
+            multi = 0;
     end
 
     assign s_1 = multi ? s_2 : s;

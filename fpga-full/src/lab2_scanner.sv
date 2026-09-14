@@ -2,7 +2,7 @@
 // Made September 9, 2026
 // Used to be a counter to scan a keypad
 
-module lab2_scanner #(parameter width = 24, parameter logic [width-1:0] max_count = 749_999)(// Params
+module lab2_scanner #(parameter width = 24, parameter logic [width-1:0] max_count = 11_999_999)(// Params
      input  logic clk, // Clock input
      output logic [3:0] rows
  );
