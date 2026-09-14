@@ -2,12 +2,13 @@
 // Made September 9, 2026
 // Used to be a counter to scan a keypad
 
-module lab2_scanner #(parameter width = 24, parameter logic [width-1:0] max_count = 2_999_999)(// Params
+module lab2_scanner #(parameter width = 24, parameter logic [width-1:0] max_count = 749_999)(// Params
+     input  logic clk, // Clock input
      output logic [3:0] rows
  );
 
-logic [width-1:0] count = 0;
-logic [1:0] state = 0;
+    logic [width-1:0] count2 = 0;
+    logic [1:0] state = 0;
 
   // Sets up a counter for the multiplexer
   counter #(
@@ -21,14 +22,15 @@ logic [1:0] state = 0;
     );
 
   // Assigning final logic and switching
-  if (count < max_count/4) begin
-      state = 2'b00;
-  else if (count < max_count/2)
-      state = 2'b01;
-  else if (count < 3*max_count/4)
-      state = 2'b10;
-  else 
-      state = 2'b11;
+  always_comb begin
+    if (count2 < max_count/4) 
+        state = 2'b00;
+    else if (count2 < max_count/2)
+        state = 2'b01;
+    else if (count2 < 3*max_count/4)
+        state = 2'b10;
+    else 
+        state = 2'b11;
   end
 
   // Assign row data
@@ -38,7 +40,7 @@ logic [1:0] state = 0;
             2'b01: rows = 4'b0100; // Row 1 active
             2'b10: rows = 4'b0010; // Row 2 active
             2'b11: rows = 4'b0001; // Row 3 active
-            default: rows = 4'b1111; // All rows inactive
+            default: rows = 4'b0000; // All rows inactive
         endcase
     end
 

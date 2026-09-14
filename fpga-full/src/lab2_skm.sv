@@ -13,12 +13,11 @@ module lab2_skm (
     output logic [3:0] led // LED outputs from the FPGA
 );
 
+    // Starting logic
     logic int_osc;
-    logic counter1;
-    logic counter2;
+    logic [23:0] counter;
     logic multi; // For multiplexing the two seven-segment displays
     logic [1:0] state; // State variable for the keypad
-
     logic [3:0] s_1;
 
 
@@ -55,15 +54,9 @@ module lab2_skm (
         .width     (width2),
         .max_count (max_count2)
     ) scan (
+        .clk     (int_osc),
         .rows    (rows)
     );
-
-    // Convert switches into the 7-segment display
-    lab2_sevenseg sevenseg_decoder (
-        .s   (s_1),
-        .seg (seg)
-    );
-
     
     // Assigning final logic and switching
     if counter > max_count/2 begin
