@@ -59,7 +59,7 @@ module lab2_skm (
     
     // Assigning final logic and switching
     always_comb begin
-        if (counter > max_count/2)
+        if (counter > max_count1/2)
             multi = 1;
         else
             multi = 0;
