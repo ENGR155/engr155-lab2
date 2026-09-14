@@ -17,7 +17,6 @@ module lab2_skm (
     logic int_osc;
     logic [23:0] counter;
     logic multi; // For multiplexing the two seven-segment displays
-    logic [1:0] state; // State variable for the keypad
     logic [3:0] s_1;
 
 
@@ -60,7 +59,7 @@ module lab2_skm (
     
     // Assigning final logic and switching
     always_comb begin
-        if counter > max_count/2
+        if (counter > max_count/2)
             multi = 1;
         else
             multi = 0;
